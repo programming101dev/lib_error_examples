@@ -119,9 +119,7 @@ else()
 endif()
 
 target_link_directories(create_destroy_example PRIVATE /usr/local/lib${LIBSUFFIX})
-
-# Enable sanitizer checks
-target_link_libraries(create_destroy_example PRIVATE ${SANITIZER_FLAGS_STRING})
+target_link_options(create_destroy_example PRIVATE ${INSTRUMENTATION_FLAGS_LIST})
 
 # Link libraries
 target_link_libraries(create_destroy_example PRIVATE p101_error)
