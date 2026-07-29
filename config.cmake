@@ -40,6 +40,7 @@ set(create_destroy_HEADERS "")
 set(create_destroy_LINK_LIBRARIES
         p101_error
         p101_env
+        p101_tool_event
         p101_c
         p101_posix
         m
