@@ -1,64 +1,20 @@
-# lib_error_examples Repository Guide
+# lib_error examples
 
-Welcome to the `lib error examples` repository. This guide will help you set up and run the provided scripts.
+Small executable examples for `lib_error`. Install `lib_error` first, or build
+this repository inside the p101 workspace's exact dependency lane.
 
-## **Table of Contents**
+`lifecycle` creates an error, raises and checks a typed user error, then resets
+and destroys it.
 
-1. [Cloning the Repository](#cloning-the-repository)
-2. [Prerequisites](#Prerequisites)
-3. [Running the `change-compiler.sh` Script](#running-the-change-compilersh-script)
-4. [Running the `build.sh` Script](#running-the-buildsh-script)
-
-## **Cloning the Repository**
-
-Clone the repository using the following command:
+## Build
 
 ```bash
 git clone https://github.com/programming101dev/lib_error_examples.git
-```
-
-Navigate to the cloned directory:
-
-```bash
 cd lib_error_examples
+cmake -S . -B build -DCMAKE_C_COMPILER=clang -DP101_BUILD_LEVEL=1
+cmake --build build
+./build/error-lifecycle
 ```
 
-Ensure the scripts are executable:
-
-```bash
-chmod +x *.sh
-```
-
-## **Prerequisites**
-
-- to ensure you have all of the required tools installed, run:
-```bash
-./check-env.sh
-```
-
-If you are missing tools follow these [instructions](https://docs.google.com/document/d/1ZPqlPD1mie5iwJ2XAcNGz7WeA86dTLerFXs9sAuwCco/edit?usp=drive_link).
-
-You will need to install:
-- [libp101_error](https://github.com/programming101dev/lib_error)
-
-## **Running the change-compiler.sh Script**
-
-Tell CMake which compiler you want to use:
-
-```bash
-./change-compiler.sh -c <compiler>
-```
-
-To the see the list of possible compilers:
-
-```bash
-cat supported_c_compilers.txt
-```
-
-## **Running the build.sh Script**
-
-To build the program run:
-
-```bash
-./build.sh
-```
+Workspace compiler discovery writes other available choices to
+`supported_c_compilers.txt`.
